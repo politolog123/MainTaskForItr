@@ -1,0 +1,26 @@
+body {
+    background-color: #343a40; 
+    color: #000000; 
+}
+
+.table {
+    background-color: #454d55;
+}
+
+.thead-dark th {
+    background-color: #212529; 
+    color: #ffffff;
+}
+
+.modal-content {
+    background-color: #454d55;
+    color: #ffffff;
+}
+
+.modal-header {
+    border-bottom: 1px solid #343a40;
+}
+
+.modal-footer {
+    border-top: 1px solid #343a40;
+}

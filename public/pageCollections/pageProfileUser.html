@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link id="themeStylesheet" rel="stylesheet" href="/css/light-theme.css" />
+    <script src="../js/theme.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="d-flex justify-content-between align-items-center py-3">
+        <h1>My Collections</h1>
+        <div>
+          <button
+            id="showCollectionsBtn"
+            class="btn btn-outline-secondary btn-sm"
+          >
+            Show Collections
+          </button>
+          <button
+            id="toggleThemeButton"
+            class="btn btn-outline-secondary btn-sm"
+          >
+            Toggle Theme
+          </button>
+          <button
+            id="toggleLanguageButton"
+            class="btn btn-outline-secondary btn-sm"
+          >
+            EN/Other
+          </button>
+          <button id="goToMain" class="btn btn-outline-dark btn-sm">
+            Logout
+          </button>
+        </div>
+      </header>
+      <main>
+        <div class="mb-4">
+          <button id="create-collection-btn" class="btn btn-outline-success">
+            Create New Collection
+          </button>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col" data-key>ID</th>
+              <th scope="col" data-key id="collectionNameHeader">Name</th>
+              <th scope="col" data-key>Description</th>
+              <th scope="col" data-key>Category</th>
+              <th scope="col" data-key>Image</th>
+              <th scope="col" data-key>Actions</th>
+              <th scope="col" data-key>Link</th>
+            </tr>
+          </thead>
+          <tbody id="collectionsBody"></tbody>
+        </table>
+      </main>
+    </div>
+
+    <div
+      class="modal fade"
+      id="createCollectionModal"
+      tabindex="-1"
+      aria-labelledby="createCollectionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createCollectionModalLabel">
+              Create New Collection
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="create-collection-form">
+              <div class="form-group">
+                <label for="collection-name">Collection Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="collection-name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="collection-description">Description</label>
+                <textarea
+                  class="form-control"
+                  id="collection-description"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="collection-category'">Category:</label>
+                <select class="form-control" id="collection-category">
+                  <option value="Books">Books</option>
+                  <option value="Сars">Сars</option>
+                  <option value="Toys">Toys</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="collection-image">Image</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="collection-image"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Create</button>
+              <div id="collectionMessagePlaceholder"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="editCollectionModal"
+      tabindex="-1"
+      aria-labelledby="editCollectionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editCollectionModalLabel">
+              Edit Collection
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editCollectionForm">
+              <input type="hidden" id="editCollectionId" />
+              <div class="form-group">
+                <label for="editCollectionName">Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCollectionName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editCollectionDescription">Description:</label>
+                <textarea
+                  class="form-control"
+                  id="editCollectionDescription"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="editCollectionCategoryEdit">Category:</label>
+                <select class="form-control" id="editCollectionCategoryEdit">
+                  <option value="Books">Books</option>
+                  <option value="Cars">Cars</option>
+                  <option value="Toys">
+                    Toys</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="editCollectionImage">Image URL:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCollectionImage"
+                />
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="saveCollectionChanges()"
+              >
+                Save Changes
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="closeEditModal()"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../pageCollections/userProfile.js"></script>
+  </body>
+</html>

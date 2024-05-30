@@ -1,0 +1,25 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.table {
+    background-color: #f8f9fa;
+}
+
+.thead-dark th {
+    background-color: #343a40;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+}

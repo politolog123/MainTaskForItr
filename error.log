@@ -1,0 +1,113 @@
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:169:10)
+    at parse (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:86:15)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:514:28)
+    at endReadableNT (node:internal/streams/readable:1408:12)
+SyntaxError: Unexpected token 'd', ...""image": fdsf
+
+}
+" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:92:19)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    at invokeCallback (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:514:28)
+    at endReadableNT (node:internal/streams/readable:1408:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
+PayloadTooLargeError: request entity too large
+    at readStream (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:163:17)
+    at getRawBody (C:\Users\никита\Desktop\ProjectCourses\node_modules\raw-body\index.js:116:12)
+    at read (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\read.js:79:3)
+    at jsonParser (C:\Users\никита\Desktop\ProjectCourses\node_modules\body-parser\lib\types\json.js:138:5)
+    at Layer.handle [as handle_request] (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\router\index.js:280:10)
+    at expressInit (C:\Users\никита\Desktop\ProjectCourses\node_modules\express\lib\middleware\init.js:40:5)
