@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const pool = require('./config/dbConfig');
+// const pool = require('./config/dbConfig');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
 const jwt = require('jsonwebtoken');
@@ -232,9 +232,11 @@ app.post('/users/register', async (req, res) => {
     const { username, password, email,  isadmin} = req.body;
     console.log('Extracted data:', username, password, email, isadmin);
     try {
+        // const query = 'INSERT INTO users (username, password, email, isadmin) VALUES (, $2, $3, $4) RETURNING *';
         const query = 'INSERT INTO users (username, password, email, isadmin) VALUES ($1, $2, $3, $4) RETURNING *';
         const values = [username, password, email, isadmin]; // Добавляем значение email в запрос
-        const result = await pool.query(query, values);
+        console.log(values)
+        const result = await sequelize.query(query, {bind:values, type:sequelize.QueryTypes.INSERT});
         res.status(201).json(result.rows[0]);
     } catch (err) {
         console.error('Error creating user:', err);
@@ -455,13 +457,13 @@ app.post('/users/login', async (req, res) => {
     try {
         // Находим пользователя в базе данных по электронной почте
         const query = 'SELECT * FROM users WHERE email = $1';
-        const result = await pool.query(query, [email]);
-
-        if (result.rows.length === 0) {
+        const result = await sequelize.query(query, {bind:[email],type:sequelize.QueryTypes.SELECT});
+        console.log(result)
+        if (result.length === 0) {
             return res.status(401).json({ message: 'Неверное имя пользователя или пароль' });
         }
 
-        const user = result.rows[0];
+        const user = result[0];
 
         // Проверяем, совпадает ли введенный пароль с паролем в базе данных
         if (password !== user.password) {
@@ -501,7 +503,7 @@ app.delete('/users/delete/:userId', async (req, res) => {
 
     try {
         // Выполнение SQL-запроса для удаления пользователя из базы данных
-        const result = await pool.query('DELETE FROM users WHERE id = $1', [userId]);
+        const result = await sequelize.query('DELETE FROM users WHERE id = $1', {bind:[userId],type:sequelize.QueryTypes.DELETE});
         
         if (result.rowCount > 0) {
             res.status(200).json({ message: 'Пользователь успешно удален' });
@@ -565,7 +567,7 @@ app.put('/users/update_information/:userId',authMiddleware,isProfileOwner, async
         values.push(userId);
 
         // Выполняем SQL-запрос для обновления информации о пользователе
-        const result = await pool.query(updateQuery, values);
+        const result = await sequelize.query(updateQuery, {bind:values, type:sequelize.QueryTypes.UPDATE});
         
         if (result.rowCount > 0) {
             res.status(200).json({ message: 'Информация о пользователе успешно обновлена' });
@@ -584,7 +586,7 @@ app.put('/users/update-password', authMiddleware,isProfileOwner, async (req, res
     try {
         // Получаем текущий пароль пользователя из базы данных
         const userQuery = 'SELECT password FROM users WHERE id = $1';
-        const userResult = await pool.query(userQuery, [userId]);
+        const userResult = await sequelize.query(userQuery, {bind:[userId],type:sequelize.QueryTypes.SELECT});
 
         if (userResult.rows.length === 0) {
             return res.status(404).json({ error: 'User Not Found', message: 'Пользователь не найден' });
@@ -599,7 +601,7 @@ app.put('/users/update-password', authMiddleware,isProfileOwner, async (req, res
 
         // Обновляем пароль
         const updateQuery = 'UPDATE users SET password = $1 WHERE id = $2';
-        await pool.query(updateQuery, [newPassword, userId]);
+        await sequelize.query(updateQuery, {bind:[newPassword, userId],type:sequelize.QueryTypes.UPATE});
 
         res.status(200).json({ message: 'Пароль успешно обновлен' });
     } catch (error) {
@@ -698,6 +700,15 @@ app.use((err, req, res, next) => {
 });
 // Start server
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+(async () => {
+    try {
+      await sequelize.authenticate();
+      console.log('Connection has been established successfully.');
+      await sequelize.sync();
+      app.listen(PORT, () => {
+        console.log(`App listening at http://localhost:${PORT}`);
+      });
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
+  })();

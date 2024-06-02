@@ -83,7 +83,7 @@
             </div>
             <div class="form-group">
               <label for="collection-id">Collection ID</label>
-              <input type="number" class="form-control" id="collection-id" required />
+              <input type="number" disabled class="collection-id form-control" id="collection-id" required />
             </div>
             <div class="form-group">
               <label for="edit-item-name">Item Name</label>
@@ -107,7 +107,7 @@
 
                 <input type="text" class="form-control mb-2" id="newFieldName" name="fieldName"
                   placeholder="Enter field name" />
-                <button type="button" class="btn btn-secondary mb-2" onclick="createNewField('edit-input-list')">
+                <button type="button" class="btn btn-secondary mb-2" onclick="createNewField('edit-input-list','newFieldName')">
                   Add Field
                 </button>
               </div>
@@ -136,7 +136,7 @@
           <form id="create-item-form">
             <div class="form-group">
               <label for="collection-id">Collection ID</label>
-              <input type="number" class="form-control" id="collection-id" required />
+              <input type="number" class="collection-id form-control" id="collection-id" required />
             </div>
             <div class="form-group">
               <label for="item-name">Item Name</label>
@@ -252,9 +252,9 @@
                   <option value="checkbox">Checkbox</option>
                 </select>
                 <!-- <label class="form-check-label" for="fieldName">Field Name</label> -->
-                <input type="text" class="form-control mb-2" id="newFieldName" name="fieldName"
+                <input type="text" class="form-control mb-2" id="newFieldName2" name="fieldName"
                   placeholder="Enter field name" />
-                <button type="button" class="btn btn-secondary mb-2" onclick="createNewField('inputList')">
+                <button type="button" class="btn btn-secondary mb-2" onclick="createNewField('inputList','newFieldName2')">
                   Add Field
                 </button>
               </div>

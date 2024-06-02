@@ -1,11 +1,24 @@
 const { Sequelize } = require('sequelize');
-require('dotenv').config(); // Загрузка переменных среды из файла .env (если используется)
+
+
+require('dotenv').config();
+
+// 
 
 const sequelize = new Sequelize(process.env.DB_DATABASE_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
   host: process.env.DB_HOSTNAME,
   port: process.env.DB_PORT,
-  dialect: 'postgres'
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true, // Требуется использование SSL/TLS
+      rejectUnauthorized: false // Отключение проверки сертификата (небезопасно в рабочей среде)
+    }
+  }
 });
+
+
+
 
 const User = sequelize.define('User', {
   username: {
@@ -97,44 +110,49 @@ const Item = sequelize.define('Item', {
   timestamps: false
 });
 
-const ItemField = sequelize.define('ItemField', {
-  collectionId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    references: { model: 'Collections', key: 'id' },
-    onDelete: 'CASCADE'
-  },
-  fieldName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  fieldType: {
-    type: Sequelize.ENUM('INTEGER', 'STRING', 'TEXT', 'BOOLEAN', 'DATE'),
-    allowNull: false
-  }
-}, {
-  timestamps: false
-});
+// const ItemField = sequelize.define('ItemField', {
+//   collectionId: {
+//     type: Sequelize.INTEGER,
+//     allowNull: false,
+//     references: { model: 'Collections', key: 'id' },
+//     onDelete: 'CASCADE'
+//   },
+//   fieldName: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   fieldType: {
+//     type: Sequelize.ENUM('INTEGER', 'STRING', 'TEXT', 'BOOLEAN', 'DATE'),
+//     allowNull: false
+//   },
+//   id: {
+//     type: Sequelize.INTEGER,
+//     primaryKey: true,
+//     autoIncrement: true
+//   },
+// }, {
+//   timestamps: false
+// });
 
-const FieldValue = sequelize.define('FieldValue', {
-  itemId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    references: { model: 'Items', key: 'id' },
-    onDelete: 'CASCADE'
-  },
-  fieldId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    references: { model: 'ItemField', key: 'id' },
-    onDelete: 'CASCADE'
-  },
-  value: {
-    type: Sequelize.TEXT
-  }
-}, {
-  timestamps: false
-});
+// const FieldValue = sequelize.define('FieldValue', {
+//   itemId: {
+//     type: Sequelize.INTEGER,
+//     allowNull: false,
+//     references: { model: 'items', key: 'id' },
+//     onDelete: 'CASCADE'
+//   },
+//   fieldId: {
+//     type: Sequelize.INTEGER,
+//     allowNull: false,
+//     references: { model: 'ItemField', key: 'id' },
+//     onDelete: 'CASCADE'
+//   },
+//   value: {
+//     type: Sequelize.TEXT
+//   }
+// }, {
+//   timestamps: false
+// });
 
 Collection.belongsTo(User, { foreignKey: 'userid' });
 User.hasMany(Collection, { foreignKey: 'userid' });
@@ -142,20 +160,20 @@ User.hasMany(Collection, { foreignKey: 'userid' });
 Item.belongsTo(Collection, { foreignKey: 'collectionid' });
 Collection.hasMany(Item, { foreignKey: 'collectionid' });
 
-ItemField.belongsTo(Collection, { foreignKey: 'collectionId' });
-Collection.hasMany(ItemField, { foreignKey: 'collectionId' });
+// ItemField.belongsTo(Collection, { foreignKey: 'collectionId' });
+// Collection.hasMany(ItemField, { foreignKey: 'collectionId' });
 
-FieldValue.belongsTo(Item, { foreignKey: 'itemId' });
-Item.hasMany(FieldValue, { foreignKey: 'itemId' });
+// FieldValue.belongsTo(Item, { foreignKey: 'itemId' });
+// Item.hasMany(FieldValue, { foreignKey: 'itemId' });
 
-FieldValue.belongsTo(ItemField, { foreignKey: 'fieldId' });
-ItemField.hasMany(FieldValue, { foreignKey: 'fieldId' });
+// FieldValue.belongsTo(ItemField, { foreignKey: 'fieldId' });
+// ItemField.hasMany(FieldValue, { foreignKey: 'fieldId' });
 
 module.exports = {
   sequelize,
   User,
   Collection,
   Item,
-  ItemField,
-  FieldValue
+  // ItemField,
+  // FieldValue
 };

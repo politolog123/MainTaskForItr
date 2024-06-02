@@ -33,13 +33,10 @@ document
   .addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const collectionid = document.getElementById("collection-id").value.trim();
+    const collectionid = $(".modal:visible .collection-id").val().trim();
     console.log(collectionid);
-    const itemName = document.getElementById("item-name").value.trim();
-    const itemTags = document
-      .getElementById("item-tags")
-      .value.split(",")
-      .map((tag) => tag.trim());
+    const itemName = $(".modal:visible #item-name").val().trim();
+    const itemTags =  $(".modal:visible #item-tags").val().split(",").map((tag) => tag.trim());
 
     if (!collectionid || !itemName || !itemTags.length) {
       console.log("All fields must be filled out.");
@@ -129,15 +126,14 @@ function renderItems() {
     itemsTableBody.appendChild(row);
   });
 }
-function createNewField(listId) {
+function createNewField(listId,inputId) {
   const fieldContainer = document.getElementById(listId);
 
-  const fieldName = document.getElementById("newFieldName").value;
-  const fieldType = document.getElementById("dataTypeDropDown").value;
+  const fieldName = document.getElementById(inputId).value;
+  const fieldType = $(".modal:visible #dataTypeDropDown").val();
   createNewFieldByValues(fieldName,'',fieldType,fieldContainer)
 }
 function createNewFieldByValues(fieldName, fieldValue,fieldType,fieldContainer) {
-  
   if (fieldName.trim() === "") {
     alert("Please enter a field name");
     return;
