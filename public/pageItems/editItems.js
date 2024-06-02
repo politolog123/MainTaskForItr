@@ -1,7 +1,7 @@
 async function fetchAllItems(collectionId = "") {
   try {
     const response = await fetch(
-      `http://localhost:3001/items/all/${collectionId}`
+      `/items/all/${collectionId}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch items");
@@ -107,7 +107,7 @@ async function saveEditedItem() {
   console.log("Sending data:", { name, tags });
 
   try {
-    const response = await fetch(`http://localhost:3001/items/${itemId}`, {
+    const response = await fetch(`/items/${itemId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

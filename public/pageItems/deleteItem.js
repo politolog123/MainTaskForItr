@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function fetchAllItems(collectionid) {
   try {
     const response = await fetch(
-      `http://localhost:3001/items/all/${collectionid}`
+      `/items/all/${collectionid}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch items");
@@ -48,7 +48,7 @@ function renderItems(items) {
 async function deleteItem(itemId) {
   if (confirm("Are you sure you want to delete this item?")) {
     try {
-      const response = await fetch(`http://localhost:3001/items/${itemId}`, {
+      const response = await fetch(`/items/${itemId}`, {
         method: "DELETE",
       });
       if (!response.ok) {

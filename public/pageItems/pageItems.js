@@ -56,7 +56,7 @@ document
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3001/items/add", {
+      const response = await fetch("/items/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

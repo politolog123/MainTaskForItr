@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchCollectionItems(collectionId) {
     try {
-        const response = await fetch(`http://localhost:3001/collections/byId/${collectionId}`);
+        const response = await fetch(`/collections/byId/${collectionId}`);
         if (!response.ok) {
             throw new Error('Failed to fetch collection items');
         }

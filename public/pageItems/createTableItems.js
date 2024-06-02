@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function fetchAllItems(collectionid) {
   try {
     const response = await fetch(
-      `http://localhost:3001/items/all/${collectionid}`
+      `/items/all/${collectionid}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch items");
