@@ -237,7 +237,7 @@ app.post('/users/register', async (req, res) => {
         const values = [username, password, email, isadmin]; // Добавляем значение email в запрос
         console.log(values)
         const result = await sequelize.query(query, {bind:values, type:sequelize.QueryTypes.INSERT});
-        res.status(201).json(result.rows[0]);
+        res.status(201).json(result[0]);
     } catch (err) {
         console.error('Error creating user:', err);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -588,11 +588,11 @@ app.put('/users/update-password', authMiddleware,isProfileOwner, async (req, res
         const userQuery = 'SELECT password FROM users WHERE id = $1';
         const userResult = await sequelize.query(userQuery, {bind:[userId],type:sequelize.QueryTypes.SELECT});
 
-        if (userResult.rows.length === 0) {
+        if (userResult.length === 0) {
             return res.status(404).json({ error: 'User Not Found', message: 'Пользователь не найден' });
         }
 
-        const currentPassword = userResult.rows[0].password;
+        const currentPassword = userResult[0].password;
 
         // Проверяем, совпадает ли текущий пароль с введенным пользователем старым паролем
         if (oldPassword !== currentPassword) {
