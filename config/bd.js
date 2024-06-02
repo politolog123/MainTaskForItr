@@ -18,8 +18,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE_NAME, process.env.DB_USE
 });
 
 
-
-
 const User = sequelize.define('User', {
   username: {
     type: Sequelize.STRING,

@@ -24,7 +24,7 @@ async function fetchCollections() {
   const token = localStorage.getItem("token");
   const formattedToken = `Bearer ${token}`;
   try {
-    const response = await fetch("http://localhost:3001/collections", {
+    const response = await fetch("/collections", {
       method: "GET",
       headers: {
         Authorization: formattedToken,
@@ -118,7 +118,7 @@ function displayCollections(collections) {
   collectionsBody.innerHTML = "";
 
   collections.forEach((collection) => {
-    const collectionUrl = `http://localhost:3001/collections/${collection.id}`;
+    const collectionUrl = `/collections/${collection.id}`;
 
     const collectionRow = `
             <tr>
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3001/collections/add", {
+      const response = await fetch("/collections/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -236,7 +236,7 @@ document
   .addEventListener("click", async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3001/collections", {
+      const response = await fetch("/collections", {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token,
