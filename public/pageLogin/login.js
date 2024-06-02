@@ -40,6 +40,6 @@ logButton.addEventListener("click", async function (event) {
   }
 });
 
-regButton.addEventListener("click", function () {
-  window.location.href = "/pageRegistration/registration.html";
-});
+// regButton.addEventListener("click", function () {
+//   window.location.href = "/pageRegistration/registration.html";
+// });
