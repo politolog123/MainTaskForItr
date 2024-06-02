@@ -35,6 +35,6 @@ registerButton.addEventListener("click", async function (event) {
     );
   }
 });
-loginButton.addEventListener("click", function () {
-  window.location.href = "/pageLogin/login.html";
-});
+// loginButton.addEventListener("click", function () {
+//   window.location.href = "/pageLogin/login.html";
+// });

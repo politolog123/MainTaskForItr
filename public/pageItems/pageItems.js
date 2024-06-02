@@ -76,7 +76,7 @@ document
 
         document.getElementById("create-item-form").reset();
         $("#createItemModal").modal("hide");
-        renderItems();
+        renderItems(items);
       } else {
         const errorData = await response.json();
         console.error("Error adding item:", errorData);
