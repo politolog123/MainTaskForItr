@@ -19,6 +19,7 @@ async function fetchCollectionItems(collectionId) {
     }
 }
 
+
 function renderCollectionItems(collection) {
     const collectionTitle = document.getElementById('collectionTitle');
     if (collection && collection.name) {

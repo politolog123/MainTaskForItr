@@ -4,14 +4,14 @@ const secretKey = config.secretKey;
 
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  console.log('Auth Header:', authHeader);
+ // console.log('Auth Header:', authHeader);
   
   if (!authHeader) {
       return res.status(401).json({ error: 'Authorization header missing' });
   }
 
   const token = authHeader.split(' ')[1];
-  console.log('Token:', token);
+  //console.log('Token:', token);
 
   if (!token) {
       return res.status(401).json({ error: 'Token missing' });
@@ -22,7 +22,7 @@ const authMiddleware = (req, res, next) => {
           return res.status(401).json({ error: 'Invalid token' });
       }
       req.user = decoded;
-      console.log('Decoded user:', decoded);
+    //  console.log('Decoded user:', decoded);
       next();
   });
 };

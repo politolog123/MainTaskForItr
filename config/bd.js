@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 
-require('dotenv').config();
+
 
 // 
 
@@ -108,49 +108,47 @@ const Item = sequelize.define('Item', {
   timestamps: false
 });
 
-// const ItemField = sequelize.define('ItemField', {
-//   collectionId: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false,
-//     references: { model: 'Collections', key: 'id' },
-//     onDelete: 'CASCADE'
-//   },
-//   fieldName: {
-//     type: Sequelize.STRING,
-//     allowNull: false
-//   },
-//   fieldType: {
-//     type: Sequelize.ENUM('INTEGER', 'STRING', 'TEXT', 'BOOLEAN', 'DATE'),
-//     allowNull: false
-//   },
-//   id: {
-//     type: Sequelize.INTEGER,
-//     primaryKey: true,
-//     autoIncrement: true
-//   },
-// }, {
-//   timestamps: false
-// });
+const Ticket = sequelize.define('Ticket', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  userEmail: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
+  },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  priority: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  issueKey: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  link: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  },
+  status: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    defaultValue: 'Open'
+  }
+}, {
+  tableName: 'tickets',
+  timestamps: false
+});
 
-// const FieldValue = sequelize.define('FieldValue', {
-//   itemId: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false,
-//     references: { model: 'items', key: 'id' },
-//     onDelete: 'CASCADE'
-//   },
-//   fieldId: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false,
-//     references: { model: 'ItemField', key: 'id' },
-//     onDelete: 'CASCADE'
-//   },
-//   value: {
-//     type: Sequelize.TEXT
-//   }
-// }, {
-//   timestamps: false
-// });
+module.exports = Ticket;
+
 
 Collection.belongsTo(User, { foreignKey: 'userid' });
 User.hasMany(Collection, { foreignKey: 'userid' });
@@ -158,20 +156,13 @@ User.hasMany(Collection, { foreignKey: 'userid' });
 Item.belongsTo(Collection, { foreignKey: 'collectionid' });
 Collection.hasMany(Item, { foreignKey: 'collectionid' });
 
-// ItemField.belongsTo(Collection, { foreignKey: 'collectionId' });
-// Collection.hasMany(ItemField, { foreignKey: 'collectionId' });
-
-// FieldValue.belongsTo(Item, { foreignKey: 'itemId' });
-// Item.hasMany(FieldValue, { foreignKey: 'itemId' });
-
-// FieldValue.belongsTo(ItemField, { foreignKey: 'fieldId' });
-// ItemField.hasMany(FieldValue, { foreignKey: 'fieldId' });
+Ticket.belongsTo(User, { foreignKey: 'userEmail', targetKey: 'email' });
+User.hasMany(Ticket, { foreignKey: 'userEmail', sourceKey: 'email' });
 
 module.exports = {
   sequelize,
   User,
   Collection,
   Item,
-  // ItemField,
-  // FieldValue
+  Ticket,
 };

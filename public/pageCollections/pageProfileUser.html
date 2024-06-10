@@ -17,6 +17,13 @@
       <header class="d-flex justify-content-between align-items-center py-3">
         <h1>My Collections</h1>
         <div>
+          
+          <button id="helpBtn" onclick="createTicket()" class="btn btn-success ml-2">
+            help
+          </button>
+          <script src="../ticketCreationScripts.js"></script>
+         
+
           <button
             id="showCollectionsBtn"
             class="btn btn-outline-secondary btn-sm"
@@ -59,6 +66,20 @@
             </tr>
           </thead>
           <tbody id="collectionsBody"></tbody>
+        </table>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Description</th>
+                <th scope="col">priority</th>
+                <th scope="col">issueKey</th>
+                <th scope="col">link</th>
+                <th scope="col">status</th>
+            </tr>
+          </thead>
+          <tbody id="ticketsBody"></tbody>
         </table>
       </main>
     </div>
@@ -212,5 +233,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../pageCollections/userProfile.js"></script>
+    <script src="../ticketCreationScripts.js"></script>
   </body>
 </html>

@@ -38,6 +38,45 @@ async function fetchCollections() {
   }
 }
 
+async function fetchTicketsItems() {
+  const token = localStorage.getItem("token");
+  try {
+      const response =  await fetch("/tickets", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      if (!response.ok) {
+          throw new Error('Failed to fetch collection items');
+      }
+      const tickets = await response.json();
+      // renderCollectionItems(tickets);
+      renderTickets(tickets);
+  } catch (error) {
+      console.error('Error fetching collection items:', error);
+  }
+}
+function renderTickets(tickets) {
+  const collectionsTableBody = document.getElementById("ticketsBody");
+  collectionsTableBody.innerHTML = "";
+  tickets.forEach((ticket) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+            <td>${ticket.userEmail}</td>
+            <td>${ticket.description}</td>
+            <td>${ticket.priority}</td>
+            <td><a target="_blank" href="https://intagrationjira.atlassian.net/browse/${ticket.issueKey}" class="collection-link">${ticket.issueKey}</a></td>
+              <td><a href="${ticket.link}" class="collection-link">Reported Page</a></td>
+               <td>${ticket.status}</td>
+        
+
+        `;
+    collectionsTableBody.appendChild(row);
+  });
+}
+
+
 function renderCollections() {
   const collectionsTableBody = document.getElementById("collectionsBody");
   collectionsTableBody.innerHTML = "";
@@ -228,6 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   fetchCollections();
+  fetchTicketsItems();
   window.deleteCollection = deleteCollection;
 });
 

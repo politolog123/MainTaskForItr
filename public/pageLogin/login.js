@@ -28,7 +28,7 @@ logButton.addEventListener("click", async function (event) {
 
     console.log("Пользователь успешно залогинился:", data);
     alert("Пользователь успешно залогинился!");
-
+    localStorage.setItem("email", data.email);
     localStorage.setItem("token", data.token);
 
     window.location.href = "/mainPage/mainPage.html";

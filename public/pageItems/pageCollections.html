@@ -16,6 +16,10 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-2">
       <h1 class="desc_page mr-auto">Create Collection</h1>
+      <button id="helpBtn" onclick="createTicket()" class="btn btn-success ml-2">
+        help
+      </button>
+      <script src="../ticketCreationScripts.js"></script>
       <button id="toggleThemeButton" class="btn btn-secondary mr-2">
         Toggle Theme
       </button>
@@ -53,6 +57,26 @@
               </tr>
             </thead>
             <tbody id="ItemTableBody"></tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h1 id="collectionTitle">Collection</h1>
+        <form id="createTableCollection">
+          <table class="table table-striped table-bordered table-sm" id="itemsCollectionTable">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Image</th>
+              </tr>
+            </thead>
+            <tbody id="CollectionTableBody"></tbody>
           </table>
         </form>
       </div>

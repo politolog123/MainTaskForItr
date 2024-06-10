@@ -1,3 +1,9 @@
+/* Убедимся, что стили для формы не мешают растягиванию */
+.form-group {
+    width: 100%;
+}
+
+/* Ваши стили для #tagscloud и его дочерних элементов */
 #tagscloud {
     width: 250px;
     height: 250px; 
@@ -27,23 +33,26 @@
     border-radius: 3px;
     background: #0227fa; 
 }
-#tagscloud a.tagc1{
-	background:#99ff0b;
-	color:#ff0000;
-}
-#tagscloud a.tagc2{
-	background:#F16E50;
-	color:#ff0000;
-}
-#tagscloud a.tagc3{
-	background:#006633;
-	color:#ff0000;
-}
-#tagscloud a:hover{
-	color:#ff0000;
-	background:#0099ff;
+
+#tagscloud a.tagc1 {
+    background:#99ff0b;
+    color:#ff0000;
 }
 
+#tagscloud a.tagc2 {
+    background:#F16E50;
+    color:#ff0000;
+}
+
+#tagscloud a.tagc3 {
+    background:#006633;
+    color:#ff0000;
+}
+
+#tagscloud a:hover {
+    color:#ff0000;
+    background:#0099ff;
+}
 
 .item-list {
     list-style-type: none;
@@ -72,8 +81,9 @@
     margin-bottom: auto; 
 }
 
-form{
-	display: flex;
-  flex-direction: row;
-  align-items: right;
+/* Это для отображения формы в одной линии */
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: right;
 }

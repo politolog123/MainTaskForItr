@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="modal fade" id="helpmodal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editItemModalLabel">Create Jira Ticket</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid mt-5">
+                        <div class="form-group">
+                            <label for="summary">Summary</label>
+                            <input type="text" class="form-control form-control-lg" id="summary"
+                                placeholder="Enter ticket summary" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control form-control-lg" id="description" rows="3"
+                                placeholder="Enter ticket description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+                            <select class="form-control form-control-lg" id="priority" required>
+                                <option>High</option>
+                                <option>Average</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label for="state">State</label>
+                            <select class="form-control form-control-lg" id="state" required>
+                                <option>Open</option>
+                                <!-- <option>In progress</option>
+                                <option>Rejected</option>
+                                <option>Corrected</option> -->
+                            </select>
+                        </div>
+                        <button type="button" onclick="onsubmid()" class="btn btn-primary btn-lg">Create Ticket</button>
+                        <div id="ticketResult" class="mt-3"></div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <script src="./ticketCreationScripts.js"></script>
+</body>
+
+</html>
